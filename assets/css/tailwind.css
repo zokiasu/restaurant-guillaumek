@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+:root {
+  /* Palette principale - tons dorés et terre */
+  --primary-50: #fefdf8;
+  --primary-100: #fef7e0;
+  --primary-200: #fdecc8;
+  --primary-300: #f9d71c;
+  --primary-400: #dfa878;
+  --primary-500: #c17817;
+  --primary-600: #a0621a;
+  --primary-700: #8b4513;
+  --primary-800: #6b3410;
+  --primary-900: #4a240b;
+  
+  /* Couleurs secondaires - tons chauds */
+  --secondary-50: #faf7f2;
+  --secondary-100: #f4ede1;
+  --secondary-200: #e8d5c4;
+  --secondary-300: #d4b896;
+  --secondary-400: #bc9a6a;
+  --secondary-500: #a67c52;
+  --secondary-600: #8b6240;
+  --secondary-700: #6d4c32;
+  --secondary-800: #4f3624;
+  --secondary-900: #332318;
+  
+  /* Couleurs neutres raffinées */
+  --neutral-50: #fafaf9;
+  --neutral-100: #f4f4f3;
+  --neutral-200: #e5e5e4;
+  --neutral-300: #d1d1cf;
+  --neutral-400: #a8a8a6;
+  --neutral-500: #8f8f8d;
+  --neutral-600: #737371;
+  --neutral-700: #5c5c5a;
+  --neutral-800: #3f3f3e;
+  --neutral-900: #262625;
+}
+
+/* Classes utilitaires personnalisées */
+.bg-primary { background-color: var(--primary-600); }
+.bg-primary-light { background-color: var(--primary-100); }
+.bg-primary-dark { background-color: var(--primary-800); }
+.text-primary { color: var(--primary-600); }
+.text-primary-dark { color: var(--primary-800); }
+
+.bg-secondary { background-color: var(--secondary-500); }
+.bg-secondary-light { background-color: var(--secondary-100); }
+.text-secondary { color: var(--secondary-600); }
+
+.bg-warm-gray { background-color: var(--neutral-100); }
+.text-warm-gray { color: var(--neutral-600); }
