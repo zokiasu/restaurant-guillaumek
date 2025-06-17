@@ -10,7 +10,7 @@
           <p class="text-xl mb-8 text-neutral-200">Découvrez notre cuisine raffinée, préparée avec passion et des ingrédients frais de saison.</p>
           <div class="flex flex-col sm:flex-row gap-4">
             <UButton to="/menu" class="bg-primary hover:bg-primary-dark text-white" size="lg">Voir notre menu</UButton>
-            <UButton to="/contact" class="border-primary-200 text-primary-200 hover:bg-primary-200 hover:text-primary-800" variant="outline" size="lg">Réserver une table</UButton>
+            <UButton @click="openWidgetModal" class="border-primary-200 text-primary-200 hover:bg-primary-200 hover:text-primary-800" variant="outline" size="lg">Réserver une table</UButton>
           </div>
         </div>
       </div>
@@ -76,6 +76,7 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 // Données mockées pour les plats mis en avant
 const featuredDishes = [
   {
@@ -142,4 +143,29 @@ useHead({
     { name: 'description', content: 'Le Gourmet, restaurant gastronomique proposant une cuisine raffinée à base de produits frais et de saison.' }
   ]
 });
+
+onMounted(() => {
+  if (!document.getElementById('gourmets-widget-script')) {
+    const script = document.createElement('script')
+    script.id = 'gourmets-widget-script'
+    script.src = 'https://widget.gourmets.ovh/widget.js'
+    script.setAttribute('data-api-key', 'demo_restaurant_123') // Remplace par ta vraie clé API
+    script.setAttribute('data-backend-url', 'https://gourmets.ovh/api') // Remplace par ton backend
+    document.body.appendChild(script)
+  }
+})
+
+function openWidgetModal() {
+  const modal = document.getElementById('widget-nuxt-modal')
+  if (modal) {
+    modal.style.display = 'flex'
+  }
+}
 </script>
+
+<style>
+/* Cacher le bouton flottant du widget */
+button[style*="position: fixed"][style*="bottom: 24px"][style*="right: 24px"] {
+  display: none !important;
+}
+</style>
