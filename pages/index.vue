@@ -76,7 +76,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 // Données mockées pour les plats mis en avant
 const featuredDishes = [
   {
@@ -144,6 +144,8 @@ useHead({
   ]
 });
 
+const widgetReady = ref(false)
+
 onMounted(() => {
   if (!document.getElementById('gourmets-widget-script')) {
     const script = document.createElement('script')
@@ -151,11 +153,20 @@ onMounted(() => {
     script.src = 'https://widget.gourmets.ovh/widget.js'
     script.setAttribute('data-api-key', 'demo_restaurant_123') // Remplace par ta vraie clé API
     script.setAttribute('data-backend-url', 'https://gourmets.ovh/api') // Remplace par ton backend
+    script.onload = () => {
+      widgetReady.value = true
+    }
     document.body.appendChild(script)
+  } else {
+    widgetReady.value = true
   }
 })
 
 function openWidgetModal() {
+  if (!widgetReady.value) {
+    alert('Le widget est en cours de chargement, veuillez patienter...')
+    return
+  }
   const modal = document.getElementById('widget-nuxt-modal')
   if (modal) {
     modal.style.display = 'flex'

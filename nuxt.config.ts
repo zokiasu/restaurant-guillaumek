@@ -11,16 +11,4 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui'
   ],
-
-  app: {
-    head: {
-      script: [
-        {
-          src: "https://widget.gourmets.ovh/",
-          'data-api-key': "demo_restaurant_123",
-          'data-backend-url': "https://gourmets.ovh/api"
-        }
-      ]
-    }
-  }
 })
