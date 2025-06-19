@@ -72,47 +72,47 @@
           <h2 class="text-2xl font-bold mb-6">Réserver une table</h2>
           
           <form @submit.prevent="submitReservation" class="space-y-6">
-            <UFormGroup label="Nom complet" required>
+            <UFormField label="Nom complet" required>
               <UInput v-model="reservation.name" placeholder="Votre nom" />
-            </UFormGroup>
+            </UFormField>
             
-            <UFormGroup label="Email" required>
+            <UFormField label="Email" required>
               <UInput v-model="reservation.email" type="email" placeholder="votre@email.com" />
-            </UFormGroup>
+            </UFormField>
             
-            <UFormGroup label="Téléphone" required>
+            <UFormField label="Téléphone" required>
               <UInput v-model="reservation.phone" placeholder="Votre numéro de téléphone" />
-            </UFormGroup>
+            </UFormField>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <UFormGroup label="Date" required>
+              <UFormField label="Date" required>
                 <UInput v-model="reservation.date" type="date" :min="minDate" />
-              </UFormGroup>
+              </UFormField>
               
-              <UFormGroup label="Heure" required>
+              <UFormField label="Heure" required>
                 <USelect 
                   v-model="reservation.time"
                   :options="timeSlots"
                   placeholder="Sélectionnez une heure"
                 />
-              </UFormGroup>
+              </UFormField>
             </div>
             
-            <UFormGroup label="Nombre de personnes" required>
+            <UFormField label="Nombre de personnes" required>
               <USelect 
                 v-model="reservation.guests"
                 :options="[1, 2, 3, 4, 5, 6, 7, 8]"
                 placeholder="Sélectionnez le nombre de personnes"
               />
-            </UFormGroup>
+            </UFormField>
             
-            <UFormGroup label="Message (optionnel)">
+            <UFormField label="Message (optionnel)">
               <UTextarea 
                 v-model="reservation.message"
                 placeholder="Précisez toute demande spéciale ou restriction alimentaire"
                 rows="4"
               />
-            </UFormGroup>
+            </UFormField>
             
             <UButton type="submit" color="amber" block :loading="isSubmitting">
               Réserver maintenant
